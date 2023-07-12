@@ -17,9 +17,9 @@
     become_user : root
 
   -name : Stop Existing Containers
-   command : docker stop $(docker ps -a -q)
+   shell: docker stop $(docker ps -a -q)
   -name : Delete all containers
-   command : docker rm $(docker ps -a -q)
+   shell: docker rm $(docker ps -a -q)
 
   - name: Deploy Docker Container
     command: docker run -itd -p 8084:8081 rohanraparthi/insureme:1.0
